@@ -47,15 +47,15 @@ def split_docs(documents,chunk_size=1000,chunk_overlap=20):
 docs = split_docs(documents)
 print(len(docs))
 ```
-### 4.Embedding documents with OpenAI**
+### 4.Embedding documents with OpenAI
 
 Once the documents are split, we need to embed them using OpenAI's language model. First, we need to install the tiktoken library.
 ```python
 #requires for open ai embedding
 !pip install tiktoken -q
 ```
-Now, we can use the OpenAIEmbeddings class from LangChain to embed the documents."""
-
+Now, we can use the OpenAIEmbeddings class from LangChain to embed the documents.
+```python
 import openai
 from langchain.embeddings.openai import OpenAIEmbeddings
 
@@ -63,8 +63,8 @@ embeddings = OpenAIEmbeddings(model_name="ada")
 
 query_result = embeddings.embed_query("Hello world")
 len(query_result)
-
-### 5.Vector search with Pinecone**
+```
+### 5.Vector search with Pinecone
 
 Next, we will use Pinecone to create an index for our documents. First, we need to install the pinecone-client.
 
@@ -88,7 +88,7 @@ index_name = "langchain-demo"
 
 index = Pinecone.from_documents(docs, embeddings, index_name=index_name)
 ```
-### 6.Finding similar documents**
+### 6.Finding similar documents
 
 Now, we can define a function to find similar documents based on a given query.
 
